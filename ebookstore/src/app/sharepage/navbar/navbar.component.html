@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light " >
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink=""><img class="logo" src="/assets/img/logo.png" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse"  id="navbarNav">
+        <ng-container *ngIf="!loggedin()">
+          <ul class="navbar-nav ms-auto" >
+            <li class="nav-item" >
+              <a class="nav-link"  routerLink=""  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" >POČETNA</a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="books" routerLinkActive="active-link">DOSTUPNE KNJIGE</a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link"  routerLink="about" routerLinkActive="active-link">O NAMA</a>
+            </li>
+            <li class="nav-item dropstart"  style=" background-color: rgb(90, 181, 90);">
+              <a href="" class="nav-link dropdown-toggle" style=" background-color: rgb(90, 181, 90);" data-bs-toggle="dropdown">
+                <i class="bi bi-person-square"></i>
+              </a>
+              <ul class="dropdown-menu" style=" background-color: rgb(90, 181, 90);">
+                <li><a href=""  routerLink="register" routerLinkActive="active-link" class="nav-link dropdown-item">REGISTRACIJA</a></li>
+                <li><a href=""  routerLink="login" routerLinkActive="active-link" class="nav-link dropdown-item">PRIJAVITESE</a></li>
+              </ul>
+            </li>
+          </ul>
+        </ng-container>
+      <ng-container *ngIf="loggedin()" >
+        <ul class="navbar-nav ms-auto">
+          <li  class="nav-item">
+            <a class="nav-link" routerLink="" (click)="onLogout()" routerLinkActive="active-link">ODJAVI SE <i class="bi bi-box-arrow-right"></i></a>
+          </li>
+        </ul>
+      </ng-container>
+      </div>
+    </div>
+  </nav>

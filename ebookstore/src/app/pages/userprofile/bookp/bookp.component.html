@@ -1,0 +1,105 @@
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-6" >
+            <div class="div">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5></h5>
+                        <h5 class="modal-title" style="color: rgb(7, 136, 7);justify-content: center; text-align: center;" id="staticBackdropLabel"><i class="bi bi-book-fill"></i> {{bookData.naslov}}</h5>
+                        <a type="button" class="btn-close" data-bs-dismiss="modal" routerLink="../../dashboard" aria-label="Close" id="add-edit-modal-close"></a>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-sm">
+                              <h5 style="justify-content: center; color:rgba(248, 54, 54, 0.981); text-align: center;">{{bookData.cena}} rsd</h5>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="row">
+                            <div class="col-sm">
+                              <b>Nesto više o knjizi :</b>
+                            </div>
+                          </div><br>
+                          <div class="row">
+                            <div class="col-sm">
+                              <p>{{bookData.sazetak}}</p>
+                            </div>
+                          </div><br>
+                          <div class="row">
+                            <div class="col-sm">
+                              <b>Godina izdanja: </b>{{bookData.godina_izdanja}}
+                            </div>
+                            <div class="col-sm">
+                              <b>Izdanje : </b> {{bookData.izdanje}}
+                            </div>
+                            <div class="col-sm">
+                              <b>Količina :</b>{{bookData.kolicina}}
+                            </div>
+                          </div><br> 
+                          <div class="row">
+                            <div class="col-sm">
+                              <b>Kategorija:</b>{{bookData.tip_knjige}}
+                            </div>
+                            <div class="col-sm">
+                              <b>ISBN:</b>{{bookData.isbn}}
+                            </div>
+                            <div class="col-sm">
+                              <b>Jezik publikacije:</b>{{bookData.jezik_publikacije}}
+                            </div>
+                          </div><br>   
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <div class="card" *ngFor="let atr of autorList$ | async">
+                                <div class="card-body" *ngIf="bookData.autor_id==atr.id">
+                                  <h5  style="font-size: 17px;justify-content: center; text-align: center;" >Informacije o autoru</h5>
+                                  <p class="card-text"><b>Ime : </b>{{atr.ime}}</p>
+                                  <p class="card-text"><b>Adresa  : </b>{{atr.adresa}}</p>
+                                  <p class="card-text"><b>Email : </b>{{atr.email}}</p>
+                                  <p class="card-text"><b>Web-sajt : </b>{{atr.websajt}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="card" *ngFor="let izd of izdavacList$|async">
+                                <div class="card-body"  *ngIf="bookData.izdavac_id==izd.id">
+                                  <h5   style="font-size: 17px; justify-content: center; text-align: center;">Informacije o izdavaču</h5>
+                                  <p class="card-text"><b>Ime : </b>{{izd.ime}}</p>
+                                  <p class="card-text"><b>Adresa  : </b>{{izd.adresa}}</p>
+                                  <p class="card-text"><b>Telefon : </b>{{izd.telefon}}</p>
+                                  <p class="card-text"><b>Web-sajt : </b>{{izd.websajt}}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-sm">
+                          <a type="button" *ngIf="isBVisible" (click)="toggleCard()" style="margin-left: 15%;" class="btn btn-success col-lg-8">Poruči<i class="bi bi-cart-plus-fill"></i></a>
+                        </div>
+                      </div>
+                      <br>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-12" style="padding-left: 10%; padding-top: 5%;" *ngIf="isCardVisible">
+            <h4>Unesite informacije za vašu porudžbinu</h4>
+            <div class="form">
+                <div class="mb-3">
+                <label class="form-label">Količina:</label>
+                <input type="number" class="form-control" id="kolicina" min="1" max="{{bookData.kolicina}}" value="{{bookData.kolicina}}" />
+                <label class="form-label">Vaš broj telefona:</label>
+                <input type="text" name="mobile" id="telefon" class="form-control" placeholder="broj telefona" />
+                <label class="form-label">Vaša adresa:</label>
+                <textarea class="form-control" name="adress" id="adresa" value="{{userInfo[2]}}"></textarea>
+                <button class="btn btn-md btn-success mt-2" (click)="OnSubmit(bookData.id)" style="margin-left: 15%;">Sačuvaj i poruči</button>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>

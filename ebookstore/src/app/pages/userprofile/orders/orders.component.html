@@ -1,0 +1,75 @@
+  <div class="card text-center" style="margin-bottom: 10px; ">
+    <div class="card-header" style="background-color: rgb(86, 208, 86);">
+      POSLATE PORUDŽBINE
+    </div>
+    <div class="card-body">
+        <div class="card-group">
+            <ng-container *ngFor="let order of orderInfo">
+                <ng-container *ngIf="order.status==='poslato'">
+                    <div class="card">
+                        <p class="card-img-top"><i style="font-size: 30px;" class="bi bi-book-half"></i></p>
+                        <div class="card-body">
+                            <ng-container *ngFor="let book of bookInfo">
+                                <ng-container *ngIf="order.book_id===book.id">
+                                    <h5 class="card-title"> {{book.naslov}}</h5>
+                                </ng-container>
+                            </ng-container>
+                            <p class="divv"  style="display: flex; justify-content: center;"> <b>Adresa:</b>{{order.adresa}}</p>
+                            <p class="divv"  style="display: flex; justify-content: center;"> <b>Telefon:</b> {{order.telefon}}</p>
+                            <p class="card-text"><small class="text-muted"><b>Količina:</b> {{order.kolicina}}</small></p></div>
+                    </div>
+                </ng-container>
+            </ng-container>
+          </div>
+    </div>
+  </div>
+  <div class="card text-center" style="margin-bottom: 10px;">
+    <div class="card-header"style="background-color: rgb(86, 208, 86);">
+      ODOBRENE PORUDŽBINE
+    </div>
+    <div class="card-body">
+        <div class="card-group">
+            <ng-container *ngFor="let order of orderInfo">
+                <ng-container *ngIf="order.status==='odobreno'">
+                    <div class="card">
+                        <p class="card-img-top"><i style="font-size: 30px;" class="bi bi-book-half"></i></p>
+                        <div class="card-body">
+                            <ng-container *ngFor="let book of bookInfo">
+                                <ng-container *ngIf="order.book_id===book.id">
+                                    <h5 class="card-title"> {{book.naslov}}</h5>
+                                </ng-container>
+                            </ng-container>
+                            <p class="divv"  style="display: flex; justify-content: center;"> <b>Adresa:</b>{{order.adresa}}</p>
+                            <p class="divv"  style="display: flex; justify-content: center;"> <b>Telefon:</b> {{order.telefon}}</p>
+                            <p class="card-text"><small class="text-muted"><b>Količina:</b> {{order.kolicina}}</small></p></div>
+                    </div>
+                </ng-container>
+            </ng-container>
+          </div>
+    </div>
+  </div>
+  <div class="card text-center" style="margin-bottom: 10px;">
+    <div class="card-header" style="background-color: rgb(86, 208, 86);">
+      ISPORUČENE PORUDŽBINE
+    </div>
+    <div class="card-body">
+        <div class="card-group">
+            <ng-container *ngFor="let order of orderInfo">
+                <ng-container *ngIf="order.status==='isporučeno'">
+                    <div class="card">
+                        <p class="card-img-top"><i style="font-size: 30px;" class="bi bi-book-half"></i></p>
+                        <div class="card-body">
+                            <ng-container *ngFor="let book of bookInfo">
+                                <ng-container *ngIf="order.book_id===book.id">
+                                    <h5 class="card-title"> {{book.naslov}}</h5>
+                                </ng-container>
+                            </ng-container>
+                            <p class="divv"  style="display: flex; justify-content: center;"> <b>Adresa:</b>{{order.adresa}}</p>
+                            <p class="divv"  style="display: flex; justify-content: center;"> <b>Telefon:</b> {{order.telefon}}</p>
+                            <p class="card-text"><small class="text-muted"><b>Količina:</b> {{order.kolicina}}</small></p></div>
+                    </div>
+                </ng-container>
+            </ng-container>
+          </div>
+    </div>
+  </div>

@@ -1,0 +1,40 @@
+.navbar-light .navbar-nav .nav-link
+{
+    color: var(--secondary-color);
+}
+.navbar {
+ background-color: rgb(90, 181, 90);
+}
+.navbar-light .navbar-nav .nav-link.active-link
+{
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.logo{
+height: 45px;
+width: 45px;
+}
+
+.dropdown-menu li{
+    position: relative;
+    background-color: rgb(90, 181, 90);
+
+}
+.dropdown-menu .submenu{
+    position: absolute;
+    display: none;
+    left: 20%;
+    top: 30px;
+    background-color: rgb(90, 181, 90);
+
+}
+.dropdown-menu>li:hover>.submenu{
+    display: block;
+    background-color: rgb(90, 181, 90);
+
+}
+.dropdown-item:hover{
+    background-color: rgb(90, 181, 90);
+
+}

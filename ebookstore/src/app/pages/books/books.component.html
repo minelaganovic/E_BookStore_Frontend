@@ -1,0 +1,106 @@
+<app-search (promenatrzenogteksta)="OnsearchTextEntered($event)"></app-search>
+<h1>Novi Naslovi</h1>
+<hr>
+<div class="container">
+  <div style="justify-content: center;" class="row">
+    <ng-container *ngFor="let bk of newbookList$ | async">
+      <div *ngIf="pretraga === '' || bk.naslov.toLowerCase().includes(pretraga)" class="col-sm-2 card">
+        <div class="card-body">
+          <img src="../../../assets/img/slbk2.png" class="card-img-top" alt="">
+          <div *ngFor="let atr of autorList$ | async">
+            <h5 *ngIf="bk.autor_id == atr.id" class="card-title">{{ atr.ime }}</h5>
+          </div>
+          <p class="card-text">{{ bk.naslov }}</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">NOVO</li>
+            <li class="list-group-item">{{ bk.cena }} RSD</li>
+            <ng-container *ngIf="!loggedin()">
+              <li class="list-group-item">
+                <a [routerLink]="['/book', bk.id]" style="text-decoration: none;" class="card-link">Pročitaj više&nbsp;<i
+                    class="bi bi-three-dots-vertical"></i></a>
+              </li>
+            </ng-container>
+            <ng-container *ngIf="loggedin()">
+              <li class="list-group-item">
+                <a [routerLink]="['/userprofile/bookp', bk.id]" style="text-decoration: none;" class="card-link">Pročitaj više&nbsp;<i class="bi bi-three-dots-vertical"></i></a>
+              </li>
+            </ng-container>
+          </ul>
+          <div class="card-body">
+            <ng-container *ngIf="!loggedin()">
+              <a style="text-align: center;text-decoration: none;padding-top: 15px;" href="/login"
+                class="card-link">Dodaj u korpu <i class="bi bi-cart-plus-fill"></i></a>
+            </ng-container>
+            <ng-container *ngIf="loggedin()">
+              <a style="text-align: center;text-decoration: none;padding-top: 15px;"
+                [routerLink]="['/userprofile/bookp', bk.id]" class="card-link">Dodaj u korpu <i
+                  class="bi bi-cart-plus-fill"></i></a>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="container">
+  <h1>Top Lista</h1>
+  <hr>
+  <div style="justify-content: center;"  class="row">
+  <ng-container *ngFor="let bk of topbookList$|async">
+  <div *ngIf="pretraga === '' || bk.naslov.toLowerCase().includes(pretraga)" class="col-sm-2 card">
+    <img  src="../../../assets/img/slbk2.png" class="card-img-top" alt="">
+    <div *ngFor="let atr of autorList$|async" class="card-body">
+      <h5 *ngIf="bk.autor_id==atr.id" class="card-title">{{atr.ime}}</h5>
+    </div>
+    <p class="card-text">{{bk.naslov}}</p>
+    <ul  class="list-group list-group-flush">
+      <li class="list-group-item">NAJPRODAVANIJE</li>
+      <li class="list-group-item">{{bk.cena}} RSD</li>
+      <ng-container *ngIf="!loggedin()">      
+        <li class="list-group-item"><a [routerLink]="['/book',bk.id]"  style="text-decoration: none;" class="card-link">Pročitaj više&nbsp;<i class="bi bi-three-dots-vertical"></i></a></li>    
+      </ng-container>
+      <ng-container *ngIf="loggedin()">
+        <li class="list-group-item"><a [routerLink]="['/userprofile/bookp',bk.id]"  style="text-decoration: none;" class="card-link">Pročitaj više&nbsp;<i class="bi bi-three-dots-vertical"></i></a></li>    
+      </ng-container>
+    </ul>
+    <div class="card-body">
+      <ng-container *ngIf="!loggedin()">      
+      <a style="text-align: center;text-decoration: none;padding-top: 15px;" href="/login" class="card-link">Dodaj u korpu <i class="bi bi-cart-plus-fill"></i></a>
+      </ng-container>
+      <ng-container *ngIf="loggedin()">
+        <a style="text-align: center;text-decoration: none;padding-top: 15px;" [routerLink]="['/userprofile/bookp',bk.id]"  class="card-link">Dodaj u korpu <i class="bi bi-cart-plus-fill"></i></a>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+</div>
+</div>
+<div class="container">
+  <div style="justify-content: center;"  class="row">
+   <h1>Nasi urednici preporucuju</h1>
+    <hr>
+  <ng-container *ngFor="let bk of bookList$ | async">
+  <div *ngIf="pretraga === '' || bk.naslov.toLowerCase().includes(pretraga)" class=" col-sm-2 card">
+  <img  src="../../../assets/img/slbk2.png" class="card-img-top" alt="">
+  <div *ngFor="let atr of autorList$|async" class="card-body">
+    <h5 *ngIf="bk.autor_id==atr.id" class="card-title">{{atr.ime}}</h5>
+  </div>
+  <p class="card-text">{{bk.naslov}}</p>
+  <ul  class="list-group list-group-flush">
+    <li class="list-group-item">{{bk.cena}} RSD</li>
+    <ng-container *ngIf="!loggedin()">      
+      <li class="list-group-item"><a [routerLink]="['/book',bk.id]"  style="text-decoration: none;" class="card-link">Pročitaj više&nbsp;<i class="bi bi-three-dots-vertical"></i></a></li>    
+    </ng-container>  
+    <ng-container *ngIf="loggedin()">
+      <li class="list-group-item"><a [routerLink]="['/userprofile/bookp',bk.id]"  style="text-decoration: none;" class="card-link">Pročitaj više&nbsp;<i class="bi bi-three-dots-vertical"></i></a></li>    
+    </ng-container>
+  </ul>
+  <div class="card-body">
+    <ng-container *ngIf="!loggedin()">      
+    <a style="text-align: center;text-decoration: none;padding-top: 15px;" href="/login" class="card-link">Dodaj u korpu <i class="bi bi-cart-plus-fill"></i></a>
+    </ng-container>
+    <ng-container *ngIf="loggedin()">
+      <a style="text-align: center;text-decoration: none;padding-top: 15px;" [routerLink]="['/userprofile/bookp',bk.id]"  class="card-link">Dodaj u korpu <i class="bi bi-cart-plus-fill"></i></a>
+    </ng-container></div>
+  </div>

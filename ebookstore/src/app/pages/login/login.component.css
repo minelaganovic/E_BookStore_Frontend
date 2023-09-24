@@ -1,0 +1,17 @@
+.center{
+padding: 10%;
+}
+.center1{
+    padding-top: 5% ;
+    padding-right: 30%;
+    padding-left:  30%;
+    padding-bottom:  5%;
+    background-color: rgb(90, 181, 90);
+}
+.H1{
+    padding-left: 40%;
+    padding-right: 30%;
+    padding-bottom: 5%;
+    font-size: 21px;
+    color: rgb(183, 180, 180);
+}

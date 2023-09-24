@@ -1,0 +1,40 @@
+<div class="table-responsive-sm">
+    <h5 style=" text-align: center; padding: 10px;">NARUDŽBINE ZA ODOBRAVANJE I ISPORUKU</h5>
+    <table class="table">
+        <tr>
+        <th></th>
+        <th>Knjiga</th>
+        <th>Korisnik</th>
+        <th>Količina</th>
+        <th>Adresa</th>
+        <th>Telefon</th>
+        <th>Akcija</th>
+    </tr>
+    <ng-container *ngFor="let ord of orderList$|async"  >
+        <tr *ngIf="ord.status==='poslato' || ord.status==='odobreno'">
+            <td><i style="background-color: transparent !important; " class="bi bi-bag-check"></i></td>
+                <ng-container *ngFor="let book of bookList$|async">
+                    <ng-container *ngIf="ord.book_id===book.id">
+                        <td>{{book.naslov}}</td>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let user of userList$|async">
+                    <ng-container *ngIf="ord.user_id===user.id">
+                        <td>{{user.firstName}} {{user.lastName}}</td>
+                    </ng-container>
+                </ng-container>
+                <td>{{ord.kolicina}}</td>
+                <td>{{ord.adresa}}</td>
+                <td>{{ord.telefon}}</td>
+                <ng-container *ngIf="ord.status==='poslato'">
+                    <td>Odobri <i style="background-color: transparent !important;" (click)="updateorder(ord.id)" class="bi bi-bag-check-fill"></i></td>
+                </ng-container>
+                <ng-container *ngIf="ord.status==='odobreno'">
+                    <td>Isporuci<i style="background-color: transparent !important;" (click)="isporuciorder(ord.id,ord.kolicina)" class="bi bi-bookmark-check-fill"></i></td>
+                </ng-container>
+
+        </tr>
+    </ng-container>
+    
+    </table>
+  </div>

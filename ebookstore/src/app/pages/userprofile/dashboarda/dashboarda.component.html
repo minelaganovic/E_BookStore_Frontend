@@ -1,0 +1,26 @@
+<div class="table-responsive-sm">
+    <h5 style=" text-align: center; padding: 10px;">STANJE KNJIGA U MAGACINU</h5>
+    <table class="table">
+        <tr>
+        <th></th>
+        <th>Naslov</th>
+        <th>Izdanje</th>
+        <th>Cena</th>
+        <th>ISBN</th>
+        <th>Autor</th>
+        <th>Izdavac</th>
+        <th>Količina u magacinu</th>
+    </tr>
+    <tr *ngFor="let bk of bookList$|async" >
+        <td><i style="background-color: transparent !important; " class="bi bi-book-fill"></i></td>
+        <td>{{bk.naslov}}</td>
+        <td>{{bk.izdanje}}</td>
+        <td>{{bk.cena}}</td>
+        <td>{{bk.isbn}}</td>
+        <ng-container *ngFor="let atr of autorList$ | async">
+            <td *ngIf="bk.autor_id==atr.id">{{atr.ime}}</td></ng-container>
+        <ng-container *ngFor="let izd of izdavacList$|async" ><td *ngIf="bk.izdavac_id==izd.id">{{izd.ime}}</td></ng-container>
+        <td>{{bk.kolicina}}</td>
+    </tr>
+    </table>
+  </div>

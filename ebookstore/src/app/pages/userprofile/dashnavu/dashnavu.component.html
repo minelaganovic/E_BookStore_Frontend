@@ -1,0 +1,39 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()"><img class="logosl" src="/assets/img/logo.png" alt="logo"></button>
+        <div class="logo-text" @fadeInOut *ngIf="collapsed">{{userinfo[1]}} </div>
+        <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+            <i class="fal fa-times close-icon"></i>
+        </button>
+    </div>
+    <ul class="sidenav-nav">
+        <ng-container  *ngIf="role==='user'">
+            <li class="sidenav-nav-item">
+                <a class="sidenav-nav-link" routerLink="dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                    <p class="sidenav-link-icon"><i class="bi bi-shop-window"></i></p>
+                    <span class="sidenav-link-text"  *ngIf="collapsed">Dostupne knjige</span>
+                </a>
+                </li>
+                <li class="sidenav-nav-item"> 
+                    <a class="sidenav-nav-link" routerLink="orders" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                    <p class="sidenav-link-icon"><i class="bi bi-bag-check-fill"></i></p>
+                    <span class="sidenav-link-text"  *ngIf="collapsed">Moje porudžbine</span>
+                </a>
+                </li>
+        </ng-container>
+        <ng-container  *ngIf="role==='admin'">
+            <li class="sidenav-nav-item">
+                <a class="sidenav-nav-link" routerLink="dashboarda" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                    <p class="sidenav-link-icon"><i class="bi bi-cart4"></i></p>
+                    <span class="sidenav-link-text"  *ngIf="collapsed">Porudžbine</span>
+                </a>
+            </li>
+            <li class="sidenav-nav-item">
+                <a class="sidenav-nav-link" routerLink="reppage" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                    <p class="sidenav-link-icon"><i class="bi bi-card-list"></i></p>
+                    <span class="sidenav-link-text"  *ngIf="collapsed">Magacin</span>
+                </a>
+            </li>
+        </ng-container>
+    </ul>
+</div>
