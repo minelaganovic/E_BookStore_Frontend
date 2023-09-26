@@ -1,12 +1,17 @@
 # EBookStore AngularApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+<p>Using Angular and ASP.NET technology , the database is a web application for online bookstore.</p>
+
+<p>There are at least two types of registered users: administrator and users. The system can also be accessed by unregistered users, but only the web pages for search book and home page.</p>
+<p>To order a book, login/registration in the system is required.</p>
 
 <img src="image1.png" alt="image">
 <br>
 <img src="image2.png" alt="image">
 <br>
 <img src="image3.png" alt="image">
+
+## This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
 ## Development server
 
