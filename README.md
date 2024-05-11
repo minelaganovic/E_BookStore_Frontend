@@ -1,7 +1,7 @@
 # EBookStore AngularApp
 
 <p>Using Angular and ASP.NET technology , the database is a web application for online bookstore.</p>
-
+<p><a href="https://github.com/minelaganovic/E_BookStore_B">You can find the link to the backend code at the following URL: Backend </a></p>
 <p>There are at least two types of registered users: administrator and users. The system can also be accessed by unregistered users, but only the web pages for search book and home page.</p>
 <p>To order a book, login/registration in the system is required.</p>
 
